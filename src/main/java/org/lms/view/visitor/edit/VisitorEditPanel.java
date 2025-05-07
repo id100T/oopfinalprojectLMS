@@ -15,6 +15,7 @@ public class VisitorEditPanel extends JPanel {
     private JTextField nameField;
     private JComboBox<Gender> genderField;
     private JTextField ageField;
+    private JTextField phoneField;
     private JTextField addressField;
 
     // Constructor takes a Visitor object and pre-fills fields with existing data
@@ -38,6 +39,11 @@ public class VisitorEditPanel extends JPanel {
         ageField = new JTextField(String.valueOf(visitor.getAge()));
         add(ageField);
 
+        // phone input
+        add(new JLabel("Phone:"));
+        phoneField = new JTextField(String.valueOf(visitor.getPhone()));
+        add(phoneField);
+
         // Address input
         add(new JLabel("Address:"));
         addressField = new JTextField(visitor.getAddress());
@@ -55,6 +61,7 @@ public class VisitorEditPanel extends JPanel {
             visitor.setGender((Gender) genderField.getSelectedItem());
             visitor.setAge(age);
             visitor.setAddress(addressField.getText().trim());
+            visitor.setPhone(phoneField.getText().trim());
 
             return true; // Update successful
         } catch (NumberFormatException e) {
