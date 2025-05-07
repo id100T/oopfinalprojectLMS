@@ -142,6 +142,15 @@ public class EditBookPanel extends JPanel {
             Section section = (Section) sectionComboBox.getSelectedItem(); // Get selected section.
             int quantity;
 
+
+            // Validate required fields
+            if (author.isEmpty() || type == null || title.isEmpty() || isbn.isEmpty() || section == null) {
+                JOptionPane.showMessageDialog(this,
+                        "Please complete all fields.",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+            }
+
             try {
                 quantity = Integer.parseInt(quantityField.getText()); // Parse quantity.
                 if (quantity <= 0) { // Ensure quantity is positive.
@@ -152,6 +161,9 @@ public class EditBookPanel extends JPanel {
                 JOptionPane.showMessageDialog(null, "Invalid quantity.");
                 return;
             }
+
+
+    
 
             // If editing an existing book, update its details. Otherwise, add a new book.
             if (bookToEdit == null) {
@@ -188,8 +200,8 @@ public class EditBookPanel extends JPanel {
             sectionComboBox.setSelectedItem(bookToEdit.getSection());
             quantityField.setText(String.valueOf(bookToEdit.getCopies().size())); // Show quantity based on copies.
 
-            // Disable editing of ISBN and quantity fields for existing books.
-            isbnField.setEditable(false);
+            // Disable editing of quantity fields for existing books.
+           // isbnField.setEditable(false);
             quantityField.setEditable(false);
         }
     }
