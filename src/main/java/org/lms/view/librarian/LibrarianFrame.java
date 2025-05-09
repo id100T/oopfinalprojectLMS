@@ -61,7 +61,7 @@ public class LibrarianFrame extends JFrame {
         searchButton.addActionListener(e -> updateTable());
 
         // Back button to return to the main frame
-        backButton = new JButton("Back");
+        backButton = new JButton("Logout");
         backButton.setPreferredSize(new Dimension(120, 30));
         backButton.addActionListener(e -> onBackButtonClicked());
 
